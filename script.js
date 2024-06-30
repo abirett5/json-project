@@ -6,7 +6,8 @@
 // JSON.parse() = converts a JSON string to a JS object
 
 
-const display = document.getElementById("display");
+
+const ol = document.querySelector("ol");
 
 
 // --> JSON Stringify
@@ -25,7 +26,16 @@ const display = document.getElementById("display");
 // console.log(parsedData);
 
 
+// fetch("/json-project/people.json")
+//     .then(response => response.json())
+//     .then(values => values.forEach(value => console.log(value.name)))
+//     .catch(error => console.error(error));
+
+let output = "";
 fetch("/json-project/people.json")
     .then(response => response.json())
-    .then(values => values.forEach(value => console.log(value.name)))
+    .then(values => values.forEach((value, index) => {
+        output += `<li id="person-${index + 1}">${value.name}'s age is ${value.age} and Employed status is ${value.isEmployed}.</li>`;
+        ol.innerHTML = output;
+    }))
     .catch(error => console.error(error));
