@@ -32,7 +32,7 @@ const ol = document.querySelector("ol");
 //     .catch(error => console.error(error));
 
 let output = "";
-fetch("/json-project/people.json")
+fetch("people.json")
     .then(response => response.json())
     .then(values => values.forEach((value, index) => {
         output += `<li id="person-${index + 1}">${value.name}'s age is ${value.age} and Employed status is ${value.isEmployed}.</li>`;
